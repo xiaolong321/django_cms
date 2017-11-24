@@ -33,3 +33,17 @@ https://pypi.tuna.tsinghua.edu.cn/simple清华大学的pip源
 ```
 ## 3、使用Pycharm创建django项目
 ![](gitpic/01.png)
+使用Tools-Run manage.py Task ——>输入`startapp cms`创建APP
+![](gitpic/02.png)
+在setting注册APP
+```
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'cms',
+]
+```
