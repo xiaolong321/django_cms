@@ -32,3 +32,4 @@ Successfully installed django-1.11.7 pytz-2017.3
 https://pypi.tuna.tsinghua.edu.cn/simple清华大学的pip源
 ```
 ## 3、使用Pycharm创建django项目
+![](gitpic/01.png)
