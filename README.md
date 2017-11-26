@@ -121,9 +121,11 @@ django的admin模块可以方便我们管理数据库，实现类似数据库客
 2、源码安装，从github上下载源码下来放进项目中，并安装目录下有一个`requirements.txt`文件
 源码安装方便后期拓展插件，所以本项目使用源码安装。
 ### 安装
-在项目的根目录下创建一个文件夹extra_apps，将xadmin源码包中的'xadmin'文件夹复制到刚才的extra_apps中，把extra_apps Mark as Sources文件夹，在settings.py中添加`sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))`
-取出`requirements.txt`文档
-执行`(cms) E:\PycharmProjects\django_cms\extra_apps\xadmin>pip install -r requirements.txt`
+在项目的根目录下创建一个文件夹extra_apps，将xadmin源码包中的'xadmin'文件夹复制到刚才的extra_apps中，把extra_apps Mark as Sources文件夹，在settings.py中添加`sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))`  
+
+取出`xadmin-master\requirements.txt`文档
+安装`(cms) E:\PycharmProjects\django_cms\extra_apps>pip install -r requirements.txt`  
+
 在APPS中添加
 ```
 INSTALLED_APPS = [
