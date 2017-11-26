@@ -5,7 +5,7 @@ IDE: Pycharm
 
 操作系统：windows10
 Python版本：3.6
-django版本：1.11
+django版本：1.10
 版本管理工具: virtualenv
 
 ## 1、使用virtualenv搭建Python开发虚拟环境
@@ -110,7 +110,9 @@ manage.py@django_cms > makemigrations<!--makemigration让django确定该如何�
 manage.py@django_cms > migrate<!--真正的操作数据库文件，生产对应的表-->
 ```
 ## 5、后台管理
-django的admin模块可以方便我们管理数据库，实现类似数据库客户端的功能，对数据进行增删改查。我们还可以使用xadmin来替换admin，xadmin具有更友好，更强大的管理功能。[xadmin](https://github.com/sshwsfc/xadmin)
+django的admin模块可以方便我们管理数据库，实现类似数据库客户端的功能，对数据进行增删改查。
+`manage.py@django_cms > createsuperuser`<!--创建超级用户-->
+我们还可以使用xadmin来替换admin，xadmin具有更友好，更强大的管理功能。[xadmin](https://github.com/sshwsfc/xadmin)
 ### xadmin安装方法
 1、`pip install xadmin`or`pip install git+git://github.com/sshwsfc/xadmin.git`
 2、源码安装，从github上下载源码下来放进项目中，并安装目录下有一个`requirements.txt`文件
@@ -146,3 +148,8 @@ urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
 ]
 ```
+对数据库进行迁移
+`manage.py@django_cms > makemigrations`
+`manage.py@django_cms > migrate`
+启动项目后，使用超级用户登陆，即可看到xadmin的界面
+![](gitpic/03.png)
