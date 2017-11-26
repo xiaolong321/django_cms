@@ -148,8 +148,11 @@ urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
 ]
 ```
-对数据库进行迁移
-`manage.py@django_cms > makemigrations`
-`manage.py@django_cms > migrate`
+对数据库进行迁移  
+
+`manage.py@django_cms > makemigrations`  
+
+`manage.py@django_cms > migrate`  
+
 启动项目后，使用超级用户登陆，即可看到xadmin的界面
 ![](gitpic/03.png)
