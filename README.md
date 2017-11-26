@@ -84,6 +84,65 @@ cms(Content Management System内容管理系统) 这个项目主要功能：
 ### 4.2、建立数据模型
 在cms/models.py中完成模型字段的设计，并完成数据库的生成。
 ```
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+class UserProfile(AbstractUser):<!--继承AbstractUer类，拓展字段。需要在setting.py中声明AUTH_USER_MODEL = 'cms.UserProfile'-->
+    ...
+    
+class Category(models.Model):
+    ...
+
+class Article(models.Model):
+	...
+
+class Comment(models.Model):
+    ...
+
+class Poll(models.Model):
+    ...
+
+class Keep(models.Model):
+    ...
+```
+```
 manage.py@django_cms > makemigrations<!--makemigration让django确定该如何修改数据库，记录并输出一个迁移文件-->
 manage.py@django_cms > migrate<!--真正的操作数据库文件，生产对应的表-->
+```
+## 5、后台管理
+django的admin模块可以方便我们管理数据库，实现类似数据库客户端的功能，对数据进行增删改查。我们还可以使用xadmin来替换admin，xadmin具有更友好，更强大的管理功能。[xadmin](https://github.com/sshwsfc/xadmin)
+### xadmin安装方法
+1、`pip install xadmin`or`pip install git+git://github.com/sshwsfc/xadmin.git`
+2、源码安装，从github上下载源码下来放进项目中，并安装目录下有一个`requirements.txt`文件
+源码安装方便后期拓展插件，所以本项目使用源码安装。
+### 安装
+在项目的根目录下创建一个文件夹extra_apps，将xadmin源码包中的'xadmin'文件夹复制到刚才的extra_apps中，把extra_apps Mark as Sources文件夹，在settings.py中添加`sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))`
+取出`requirements.txt`文档
+执行`(cms) E:\PycharmProjects\django_cms\extra_apps\xadmin>pip install -r requirements.txt`
+在APPS中添加
+```
+INSTALLED_APPS = [
+    ...
+    'xadmin',
+    'crispy_forms',
+    'reversion',
+]
+```
+中文支持
+```
+LANGUAGE_CODE = 'zh-hans'
+
+TIME_ZONE = 'Asia/Shanghai'
+
+USE_TZ = False
+```
+### 配置
+在`urls.py`配置中替换
+```
+import xadmin
+
+urlpatterns = [
+    # url(r'^admin/', admin.site.urls),
+    url(r'^xadmin/', xadmin.site.urls),
+]
 ```
