@@ -18,7 +18,12 @@ from django.contrib import admin
 
 import xadmin
 
+from cms.views import IndexView
+
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url(r'^xadmin/', xadmin.site.urls),
+
+    # index
+    url(r'^$', IndexView.as_view(), name='index'),
 ]

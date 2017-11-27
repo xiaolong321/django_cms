@@ -19,6 +19,7 @@ class UserProfile(AbstractUser):
 
 class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name='文章分类')
+    add_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = '文章分类'

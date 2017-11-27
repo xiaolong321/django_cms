@@ -161,3 +161,60 @@ urlpatterns = [
 
 启动项目后，使用超级用户登陆，即可看到xadmin的界面
 ![](gitpic/03.png)
+在app中创建adminx.py文件，对model进行注册
+```
+import xadmin
+
+from .models import Category, Article, Comment, Poll, Keep
+
+
+class ArticleAdmin(object):
+    list_display = ...
+    list_filter = ...
+    search_fields = ...
+...
+
+xadmin.site.register(Article, ArticleAdmin)
+```
+![](gitpic/04.png)
+## 6、视图层
+这里使用[bootstrap](http://getbootstrap.com/)构建一套前端页面，bootstrap是由Twitter推出的一个用于前端开发的开源工具包，可以方便快捷的给不熟悉前端页面设计的工程师迅速的构建前端页面。  
+**这里执行编写视图函数-配置URL-页面配置的流程**
+### 1、编写试图函数
+```
+from django.shortcuts import render
+from django.views.generic.base import View
+
+
+class IndexView(View):
+    def get(self, request):
+        return render(request, 'index.html')
+```
+在APP的views.py文件种编写，使用类方法编写
+### 2、配置URL
+```
+from django.conf.urls import url
+
+from cms.views import IndexView
+
+urlpatterns = [
+   ...
+    url(r'^$', IndexView.as_view(), name='index'),
+]
+```
+在urls.py文件中引入试图函数并配置URL
+### 3、配置页面
+#### 3.1、配置静态文件夹，并把页面放置在`templates`文件夹
+```
+在项目下创建static文件夹，把`css、fonts、js`文件夹放在其中，并在settings.py中配置
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+```
+#### 3.2、配置页面
+```
+{% load staticfiles %}
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+```
+![](gitpic/05.png)
